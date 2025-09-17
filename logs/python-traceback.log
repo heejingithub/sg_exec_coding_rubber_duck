@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/app/worker.py", line 58, in process_request
+    user_id = int(request.get("user_id"))
+ValueError: invalid literal for int() with base 10: '42a'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/worker.py", line 84, in handle
+    log.error("Failed to process request: %s", e.message)
+AttributeError: 'ValueError' object has no attribute 'message'
+
+INFO 2025-09-14T20:12:33Z worker: request payload={'user_id': '42a', 'action': 'create'}
+DEBUG 2025-09-14T20:12:33Z worker: entering process_request
+ERROR 2025-09-14T20:12:33Z worker: unhandled exception while processing request

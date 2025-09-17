@@ -1,0 +1,11 @@
+2025-09-13T10:40:02.553Z ERROR worker Error: listen EADDRINUSE: address already in use 0.0.0.0:8080
+    at Server.setupListenHandle [as _listen2] (node:net:1824:16)
+    at listenInCluster (node:net:1872:12)
+    at Server.listen (node:net:1960:7)
+    at startWorker (/usr/src/app/worker.js:34:12)
+    at main (/usr/src/app/worker.js:62:5)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+2025-09-13T10:40:02.554Z INFO worker Retrying start in 3s
+
+2025-09-13T10:40:05.559Z FATAL worker Process exiting due to repeated EADDRINUSE

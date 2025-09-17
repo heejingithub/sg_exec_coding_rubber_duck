@@ -1,0 +1,15 @@
+2025-09-13T10:31:45.221Z ERROR db MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017
+    at connectionFailureError (/usr/src/app/node_modules/mongodb/lib/cmap/connect.js:367:20)
+    at Socket.<anonymous> (/usr/src/app/node_modules/mongodb/lib/cmap/connect.js:290:22)
+    at Object.onceWrapper (node:events:631:28)
+    at Socket.emit (node:events:529:35)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+2025-09-13T10:31:46.002Z WARN db Retrying connection in 5s (attempt 2/5)
+
+2025-09-13T10:31:51.107Z ERROR db MongoServerSelectionError: Server selection timed out after 10000 ms
+    at Timeout._onTimeout (/usr/src/app/node_modules/mongodb/lib/sdam/topology.js:300:38)
+    at listOnTimeout (node:internal/timers:569:17)
+    at processTimers (node:internal/timers:512:7)

@@ -1,0 +1,16 @@
+2025-09-13T10:24:11.982Z ERROR app UnhandledPromiseRejectionWarning: TypeError: Cannot read properties of undefined (reading 'userId')
+    at getUserProfile (/usr/src/app/services/userService.js:42:19)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+Caused by: TypeError: req.session is undefined
+    at /usr/src/app/middleware/auth.js:18:27
+
+2025-09-13T10:24:12.003Z WARN app DeprecationWarning: Mongoose: the strictQuery option will be switched back to false by default in Mongoose 9
+
+2025-09-13T10:24:12.118Z ERROR app HTTP 500 POST /api/users/42/profile 35ms
+Stack:
+Error: Failed to fetch user profile
+    at /usr/src/app/routes/user.js:77:15
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at next (/usr/src/app/node_modules/express/lib/router/route.js:149:13)
+    at /usr/src/app/middleware/auth.js:24:7
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)

@@ -1,0 +1,198 @@
+/*
+@tailwind base; adds base styles to all elements:
+https://tailwindcss.com/docs/preflight
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Rubber Duck Futurism Theme === */
+:root {
+  --bg-0: #0b0f14;
+  --bg-1: #10161d;
+  --grid: rgba(120, 255, 214, 0.035);
+  --glass: rgba(255, 255, 255, 0.05);
+  --text: #e6edf3;
+  --muted: #9fb1c4;
+  --accent: #43e7a2; /* softer emerald */
+  --accent-2: #3bc7ff; /* soft cyan */
+  --warn: #ffd166; /* duck yellow */
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  color: var(--text);
+  background: radial-gradient(1400px 900px at 10% 0%, #0f1622 0%, var(--bg-0) 60%),
+    radial-gradient(1100px 700px at 100% 100%, #0b141b 0%, var(--bg-0) 60%);
+}
+
+/* Subtle neon grid background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+      0deg,
+      var(--grid) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 44px 44px, 44px 44px;
+  opacity: 0.6;
+  mask-image: radial-gradient(circle at 50% 20%, black 0%, transparent 72%);
+}
+
+.glass-panel {
+  background: var(--glass);
+  backdrop-filter: blur(10px) saturate(130%);
+  -webkit-backdrop-filter: blur(10px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.neon-border {
+  position: relative;
+  border-radius: 16px;
+}
+.neon-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  filter: blur(6px);
+  opacity: 0.22; /* toned down */
+  z-index: -1;
+}
+
+.neon-text {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.btn-neon {
+  --btn-shadow: 0 0 0 1px rgba(255, 255, 255, 0.10) inset,
+    0 10px 22px rgba(0, 0, 0, 0.35), 0 0 16px rgba(67, 231, 162, 0.18);
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+  color: #0b1210;
+  box-shadow: var(--btn-shadow);
+  transition: transform 0.06s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.btn-neon:hover {
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16) inset,
+    0 14px 26px rgba(0, 0, 0, 0.45), 0 0 24px rgba(59, 199, 255, 0.24);
+}
+.btn-muted {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+  color: var(--text);
+}
+
+.avatar-duck {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+.avatar-duck img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+.duck-avatar-sm { width: 36px; height: 36px; }
+
+.chat-bubble-user {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+.chat-bubble-assistant {
+  background: rgba(67, 231, 162, 0.12);
+  border: 1px solid rgba(67, 231, 162, 0.25);
+}
+
+@keyframes floaty {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+.duck-holo {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.duck-holo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.08) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+code, pre, .mono {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Utility for scroll areas used in app */
+.scroll-smoothy {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+.scroll-smoothy::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.scroll-smoothy::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+}
+.scroll-smoothy::-webkit-scrollbar-track {
+  background: transparent;
+}
